@@ -14,5 +14,18 @@ jobs:
         run:  |
               mkdir output
               ls
-              rsync -av --exclude='output/' --exclude='.git/' ./ output/
-
+              rsync -av --exclude='output/' --exclude='.git/' --exclude='.github/' ./ output/
+              cd output
+              ls
+      - name: Pushes to public repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.WORKFLOW_DEPLOY_KEY }}
+        with:
+          source-directory: 'output/'
+          destination-github-username: 'niklasbuhl'
+          destination-repository-name: 'website.publish'
+          user-email: 'hello@niklasbuhl.com'
+          commit-message: pushed from $GITHUB_REF
+          target-branch: 'main'
