@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Creates output folder and copy everything too it
+        run:  |
+              mkdir output
+              rsync -av --exclude='output/' --exclude='.git/' / output/
       - name: Pushes to public repository
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
