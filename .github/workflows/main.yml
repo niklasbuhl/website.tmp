@@ -14,5 +14,5 @@ jobs:
         run:  |
               mkdir output
               ls
-              rsync -av --exclude='output/' --exclude='.git/' / output/
+              rsync -av --exclude='output/' --exclude='.git/' ./ output/
 
