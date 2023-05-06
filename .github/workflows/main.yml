@@ -16,9 +16,9 @@ jobs:
         env:
           SSH_DEPLOY_KEY: ${{ secrets.WORKFLOW_DEPLOY_KEY }}
         with:
-          source-directory: .
+          source-directory: /
           destination-github-username: 'niklasbuhl'
           destination-repository-name: 'website.publish'
-          user-email: hello@niklasbuhl.com
+          user-email: 'hello@niklasbuhl.com'
           commit-message: pushed from $GITHUB_REF
-          target-branch: main
+          target-branch: 'main'
