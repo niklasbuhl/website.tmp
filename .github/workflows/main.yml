@@ -10,17 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Creates output folder
-        run:  |
-              mkdir output
-              cp -r . output
       - name: Pushes to public repository
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
         env:
           SSH_DEPLOY_KEY: ${{ secrets.WORKFLOW_DEPLOY_KEY }}
         with:
-          source-directory: output/
+          source-directory: .
           destination-github-username: 'niklasbuhl'
           destination-repository-name: 'website.publish'
           user-email: hello@niklasbuhl.com
