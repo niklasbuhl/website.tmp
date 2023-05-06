@@ -20,7 +20,7 @@ jobs:
         env:
           SSH_DEPLOY_KEY: ${{ secrets.WORKFLOW_DEPLOY_KEY }}
         with:
-          source-directory: /
+          source-directory: 'output/'
           destination-github-username: 'niklasbuhl'
           destination-repository-name: 'website.publish'
           user-email: 'hello@niklasbuhl.com'
